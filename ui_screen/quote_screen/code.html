@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Quote Explorer - Myntra AI Discovery Engine</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#181b2a",
+                    "on-primary-container": "#fffbff",
+                    "tertiary-fixed": "#71f8e4",
+                    "surface-dim": "#dcd9d9",
+                    "on-primary-fixed-variant": "#910031",
+                    "outline-variant": "#e3bdc0",
+                    "on-tertiary-fixed": "#00201c",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#c3c5da",
+                    "on-tertiary-fixed-variant": "#005048",
+                    "on-surface": "#1b1c1c",
+                    "surface-container-highest": "#e4e2e1",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#f4fffb",
+                    "secondary": "#5b5d6f",
+                    "primary-container": "#df2457",
+                    "inverse-primary": "#ffb2ba",
+                    "primary": "#b90041",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1b1c1c",
+                    "outline": "#8f6f72",
+                    "surface-container-high": "#eae8e7",
+                    "on-secondary-container": "#616376",
+                    "secondary-fixed": "#dfe1f7",
+                    "on-secondary-fixed-variant": "#434657",
+                    "secondary-container": "#dfe1f7",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-container": "#f0eded",
+                    "primary-fixed-dim": "#ffb2ba",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#008376",
+                    "surface-tint": "#bd0043",
+                    "surface-bright": "#fbf9f8",
+                    "inverse-surface": "#303030",
+                    "tertiary-fixed-dim": "#4fdbc8",
+                    "tertiary": "#00685d",
+                    "inverse-on-surface": "#f3f0f0",
+                    "surface": "#fbf9f8",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#ffd9dc",
+                    "error": "#ba1a1a",
+                    "background": "#fbf9f8",
+                    "on-primary-fixed": "#400011",
+                    "surface-variant": "#e4e2e1",
+                    "on-surface-variant": "#5b4042"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "base": "4px",
+                    "xs": "8px",
+                    "margin-desktop": "40px",
+                    "xl": "32px",
+                    "container-max": "1280px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "md": "16px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Outfit"],
+                    "body-md": ["Outfit"],
+                    "price-lg": ["Outfit"],
+                    "display": ["Outfit"],
+                    "body-lg": ["Outfit"],
+                    "headline-lg-mobile": ["Outfit"],
+                    "headline-md": ["Outfit"],
+                    "label-md": ["Outfit"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "price-lg": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">
+                Myntra Wishlist Discovery Engine
+            </h1>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative hidden md:flex items-center w-64">
+<span class="material-symbols-outlined absolute left-sm text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="w-full pl-xl pr-sm py-sm rounded-lg border border-surface-variant bg-surface-container-lowest focus:border-on-surface focus:ring-0 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant transition-colors" placeholder="Semantic search..." type="text"/>
+</div>
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200">
+                Export Executive Brief
+            </button>
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 flex items-center gap-base">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+                Settings
+            </button>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 flex flex-col p-md z-40 bg-surface-container-low border-r border-outline-variant">
+<div class="mb-xl px-md">
+<div class="font-headline-md text-headline-md text-primary mb-base">PM Dashboard</div>
+<div class="font-label-md text-label-md text-on-surface-variant">AI Discovery Engine</div>
+</div>
+<nav class="flex flex-col gap-xs flex-1">
+<!-- Tab 1: Opportunity Matrix -->
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm rounded-lg hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+                Opportunity Matrix
+            </a>
+<!-- Tab 2: Motivations -->
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm rounded-lg hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+                Motivations
+            </a>
+<!-- Tab 3: Quote Explorer (ACTIVE) -->
+<a class="flex items-center gap-md bg-secondary-container text-on-secondary-container font-bold rounded-lg px-md py-sm scale-98 active:scale-95 transition-transform font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="format_quote" data-weight="fill" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+                Quote Explorer
+            </a>
+<!-- Tab 4: Executive Brief -->
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm rounded-lg hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+                Executive Brief
+            </a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-16 md:pl-64 h-full min-h-screen pb-margin-desktop">
+<!-- Page Header Area -->
+<div class="px-margin-desktop py-lg mt-sm flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Verbatim Customer Evidence</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-base max-w-2xl">
+                    Explore raw, contextualized user feedback extracted semantically from multithreaded sources.
+                </p>
+</div>
+<!-- Contextual Filter/Search for the Main Canvas -->
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-primary text-[20px]" data-icon="manage_search">manage_search</span>
+<input class="w-full pl-xl pr-sm py-sm rounded-lg border-2 border-outline-variant bg-surface-container-lowest focus:border-primary focus:ring-0 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant transition-colors shadow-sm" placeholder="Query: e.g., 'Fabric quality winter wear'" type="text" value="Fabric quality winter wear"/>
+</div>
+</div>
+<!-- Layout Grid -->
+<div class="px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter mt-md items-start">
+<!-- Left Column: Quote Feed (Cards) -->
+<div class="md:col-span-8 flex flex-col gap-md">
+<!-- Quote Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl border border-surface-variant p-lg shadow-[0_4px_12px_rgba(27,28,28,0.04)] hover:shadow-[0_6px_16px_rgba(27,28,28,0.06)] hover:-translate-y-[2px] transition-all duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[16px]" data-icon="forum">forum</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Quality Seeker</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-base">Reddit • r/IndianFashionAddicts</p>
+</div>
+</div>
+<div class="flex items-center gap-base px-sm py-base rounded-full bg-tertiary-container text-on-tertiary-container">
+<span class="material-symbols-outlined text-[14px]" data-icon="target">target</span>
+<span class="font-label-md text-label-md">Intent: 0.92</span>
+</div>
+</div>
+<div class="font-body-lg text-body-lg text-on-surface leading-relaxed pl-md border-l-4 border-outline-variant">
+                        "The <span class="bg-primary-fixed text-on-primary-fixed px-1 rounded-sm font-medium">fabric feels incredible</span> and definitely matches the premium price point, but I noticed some <span class="bg-error-container text-on-error-container px-1 rounded-sm font-medium">pilling on the sleeves</span> after just two washes. The fit is perfect though."
+                    </div>
+<div class="mt-md flex gap-sm flex-wrap">
+<span class="px-xs py-base bg-surface-container-high rounded font-label-md text-label-md text-on-surface-variant">Durability Issue</span>
+<span class="px-xs py-base bg-surface-container-high rounded font-label-md text-label-md text-on-surface-variant">Positive Fit</span>
+</div>
+</article>
+<!-- Quote Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl border border-surface-variant p-lg shadow-[0_4px_12px_rgba(27,28,28,0.04)] hover:shadow-[0_6px_16px_rgba(27,28,28,0.06)] hover:-translate-y-[2px] transition-all duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[16px]" data-icon="shop">shop</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Trend Chaser</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-base">Play Store Review</p>
+</div>
+</div>
+<div class="flex items-center gap-base px-sm py-base rounded-full bg-tertiary-container text-on-tertiary-container">
+<span class="material-symbols-outlined text-[14px]" data-icon="target">target</span>
+<span class="font-label-md text-label-md">Intent: 0.85</span>
+</div>
+</div>
+<div class="font-body-lg text-body-lg text-on-surface leading-relaxed pl-md border-l-4 border-outline-variant">
+                        "I love the design of this jacket, exactly what I saw on Instagram. However, the <span class="bg-error-container text-on-error-container px-1 rounded-sm font-medium">sizing runs extremely small</span> compared to standard charts. Had to return and size up twice."
+                    </div>
+<div class="mt-md flex gap-sm flex-wrap">
+<span class="px-xs py-base bg-surface-container-high rounded font-label-md text-label-md text-on-surface-variant">Sizing Mismatch</span>
+<span class="px-xs py-base bg-surface-container-high rounded font-label-md text-label-md text-on-surface-variant">High Aesthetics</span>
+</div>
+</article>
+<!-- Quote Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl border border-surface-variant p-lg shadow-[0_4px_12px_rgba(27,28,28,0.04)] hover:shadow-[0_6px_16px_rgba(27,28,28,0.06)] hover:-translate-y-[2px] transition-all duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[16px]" data-icon="public">public</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Value Optimizer</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-base">Twitter / X Mention</p>
+</div>
+</div>
+<div class="flex items-center gap-base px-sm py-base rounded-full bg-secondary-fixed text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[14px]" data-icon="target">target</span>
+<span class="font-label-md text-label-md">Intent: 0.64</span>
+</div>
+</div>
+<div class="font-body-lg text-body-lg text-on-surface leading-relaxed pl-md border-l-4 border-outline-variant">
+                        "Got this on sale, so worth it for the price. The <span class="bg-primary-fixed text-on-primary-fixed px-1 rounded-sm font-medium">stitching is solid</span>. My only complaint is the <span class="bg-error-container text-on-error-container px-1 rounded-sm font-medium">chemical smell</span> straight out of the package, took a wash to get rid of it."
+                    </div>
+<div class="mt-md flex gap-sm flex-wrap">
+<span class="px-xs py-base bg-surface-container-high rounded font-label-md text-label-md text-on-surface-variant">Packaging Defect</span>
+<span class="px-xs py-base bg-surface-container-high rounded font-label-md text-label-md text-on-surface-variant">High Value</span>
+</div>
+</article>
+</div>
+<!-- Right Column: Intent Drivers Panel -->
+<aside class="md:col-span-4 bg-surface-container-lowest rounded-xl border border-surface-variant p-lg shadow-[0_4px_12px_rgba(27,28,28,0.04)] sticky top-24">
+<div class="flex items-center gap-sm border-b border-surface-variant pb-md mb-md">
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Intent Drivers</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">
+                    Aggregated structural themes based on the current semantic query.
+                </p>
+<!-- Driver List -->
+<div class="flex flex-col gap-md">
+<!-- Driver 1 -->
+<div>
+<div class="flex justify-between items-end mb-xs">
+<span class="font-label-md text-label-md text-on-surface">Material Degradation</span>
+<span class="font-label-md text-label-md text-primary">42%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 42%"></div>
+</div>
+</div>
+<!-- Driver 2 -->
+<div>
+<div class="flex justify-between items-end mb-xs">
+<span class="font-label-md text-label-md text-on-surface">Inconsistent Sizing</span>
+<span class="font-label-md text-label-md text-primary">35%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-primary h-2 rounded-full opacity-80" style="width: 35%"></div>
+</div>
+</div>
+<!-- Driver 3 -->
+<div>
+<div class="flex justify-between items-end mb-xs">
+<span class="font-label-md text-label-md text-on-surface">High Aesthetics / Fit</span>
+<span class="font-label-md text-label-md text-tertiary">18%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-tertiary h-2 rounded-full" style="width: 18%"></div>
+</div>
+</div>
+</div>
+<div class="mt-xl pt-md border-t border-surface-variant">
+<button class="w-full py-sm bg-primary text-on-primary rounded-lg font-label-md text-label-md font-bold hover:bg-surface-tint transition-colors">
+                        Generate Action Brief
+                    </button>
+</div>
+</aside>
+</div>
+</main>
+</body></html>

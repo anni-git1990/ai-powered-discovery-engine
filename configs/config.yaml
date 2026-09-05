@@ -1,0 +1,34 @@
+project:
+  name: "ai-powered-discovery-engine"
+  version: "0.1.0"
+  description: "AI-Powered Discovery Engine for Myntra Wishlist-to-Purchase Behavior"
+
+storage:
+  duckdb_path: "data/discovery_engine.duckdb"
+  chroma_path: "data/chroma_db"
+  chroma_collection: "fashion_wishlist_embeddings"
+
+scoring:
+  min_frequency_threshold: 5
+  intent_weights:
+    HIGH_BUYING_INTENT: 1.0
+    PRICE_DISCOUNT_WATCH: 0.8
+    STYLING_OCCASION_MATCHING: 0.6
+    COMPARISON_DECISION: 0.5
+    LOW_INTENT_BOOKMARKING: 0.1
+
+blocker_severity_weights:
+  SIZE_FIT_UNCERTAINTY: 2.5
+  PRICE_VALUE_SKEPTICISM: 2.0
+  QUALITY_FABRIC_CONCERN: 2.2
+  REVIEW_TRUST_DEFICIT: 2.0
+  DELIVERY_RETURN_FRICTION: 1.8
+  INVENTORY_STOCK_OUT: 1.5
+  EVENT_TIMING_POSTPONEMENT: 1.2
+  NONE: 0.0
+
+taxonomy:
+  subreddits:
+    - "IndianFashionAddicts"
+    - "DesiFragranceAddicts"
+    - "ShoppingDealsIndia"

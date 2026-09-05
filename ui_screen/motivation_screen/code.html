@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Analytics &amp; Motivations - Myntra AI Discovery Engine</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#181b2a",
+                      "on-primary-container": "#fffbff",
+                      "tertiary-fixed": "#71f8e4",
+                      "surface-dim": "#dcd9d9",
+                      "on-primary-fixed-variant": "#910031",
+                      "outline-variant": "#e3bdc0",
+                      "on-tertiary-fixed": "#00201c",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed-dim": "#c3c5da",
+                      "on-tertiary-fixed-variant": "#005048",
+                      "on-surface": "#1b1c1c",
+                      "surface-container-highest": "#e4e2e1",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#f4fffb",
+                      "secondary": "#5b5d6f",
+                      "primary-container": "#df2457",
+                      "inverse-primary": "#ffb2ba",
+                      "primary": "#b90041",
+                      "on-error-container": "#93000a",
+                      "on-primary": "#ffffff",
+                      "on-background": "#1b1c1c",
+                      "outline": "#8f6f72",
+                      "surface-container-high": "#eae8e7",
+                      "on-secondary-container": "#616376",
+                      "secondary-fixed": "#dfe1f7",
+                      "on-secondary-fixed-variant": "#434657",
+                      "secondary-container": "#dfe1f7",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#f6f3f2",
+                      "surface-container": "#f0eded",
+                      "primary-fixed-dim": "#ffb2ba",
+                      "error-container": "#ffdad6",
+                      "tertiary-container": "#008376",
+                      "surface-tint": "#bd0043",
+                      "surface-bright": "#fbf9f8",
+                      "inverse-surface": "#303030",
+                      "tertiary-fixed-dim": "#4fdbc8",
+                      "tertiary": "#00685d",
+                      "inverse-on-surface": "#f3f0f0",
+                      "surface": "#fbf9f8",
+                      "on-error": "#ffffff",
+                      "primary-fixed": "#ffd9dc",
+                      "error": "#ba1a1a",
+                      "background": "#fbf9f8",
+                      "on-primary-fixed": "#400011",
+                      "surface-variant": "#e4e2e1",
+                      "on-surface-variant": "#5b4042"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "base": "4px",
+                      "xs": "8px",
+                      "margin-desktop": "40px",
+                      "xl": "32px",
+                      "container-max": "1280px",
+                      "lg": "24px",
+                      "gutter": "16px",
+                      "md": "16px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Outfit"
+                      ],
+                      "body-md": [
+                              "Outfit"
+                      ],
+                      "price-lg": [
+                              "Outfit"
+                      ],
+                      "display": [
+                              "Outfit"
+                      ],
+                      "body-lg": [
+                              "Outfit"
+                      ],
+                      "headline-lg-mobile": [
+                              "Outfit"
+                      ],
+                      "headline-md": [
+                              "Outfit"
+                      ],
+                      "label-md": [
+                              "Outfit"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "price-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body { font-family: 'Outfit', sans-serif; background-color: #F8F9FA; color: #1b1c1c; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .shadow-soft { box-shadow: 0 4px 20px rgba(27, 28, 28, 0.04); }
+        .shadow-hover:hover { box-shadow: 0 6px 24px rgba(27, 28, 28, 0.08); transform: translateY(-2px); transition: all 0.2s ease; }
+    </style>
+</head>
+<body class="bg-surface antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">
+            Myntra Wishlist Discovery Engine
+        </div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-md font-body-md text-body-md">
+<span class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary transition-colors duration-200 cursor-pointer active:opacity-80">Dashboard</span>
+<span class="text-primary font-bold border-b-2 border-primary pb-1 cursor-pointer active:opacity-80">Analytics</span>
+<span class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary transition-colors duration-200 cursor-pointer active:opacity-80">Segments</span>
+</div>
+<div class="flex items-center gap-md ml-xl">
+<button class="bg-primary text-on-primary font-body-md text-body-md font-bold py-xs px-md rounded-DEFAULT hover:opacity-90 transition-opacity">Export Executive Brief</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center p-xs">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 flex flex-col p-md z-40 bg-surface-container-low dark:bg-on-secondary-fixed border-r border-outline-variant dark:border-outline hidden md:flex">
+<div class="mb-xl flex items-center gap-md px-md">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a user against a bright, modern corporate background with subtle pink brand lighting accents. Clean, sharp, trustworthy vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARcoz0a1x5xvCCpn6ibviU4F15ml3Zylz451QZv6hZe6bOz3lpj0JU3LP4-nNb-XPCKKV-ohGjtKdpcq10HNUQgpPGiZpJHiq-4BLmX-MAROPeLC51aZz28lR__I6b2H6VDlr02xqvSi2RulGnN95JpFMiYsvsHeAzw0V3Xbz3r66eQ87r9Fn9jqdw6_Wt74wdszeCiOYPFT1j7Z88t_x4Sf_cy6OGYRz3ozvXR9ECmgkO9RKRvF0BBw"/>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-bold">PM Dashboard</div>
+<div class="font-label-md text-label-md text-on-surface-variant opacity-80" style="font-size: 10px;">AI Discovery Engine</div>
+</div>
+</div>
+<nav class="flex flex-col gap-xs flex-grow font-label-md text-label-md">
+<a class="flex items-center gap-md text-on-surface-variant dark:text-secondary-fixed px-md py-sm hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-all rounded-lg cursor-pointer scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+                Opportunity Matrix
+            </a>
+<a class="flex items-center gap-md bg-secondary-container dark:bg-secondary-fixed-dim text-on-secondary-container dark:text-on-secondary-fixed font-bold rounded-lg px-md py-sm cursor-pointer scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+                Motivations
+            </a>
+<a class="flex items-center gap-md text-on-surface-variant dark:text-secondary-fixed px-md py-sm hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-all rounded-lg cursor-pointer scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="format_quote">format_quote</span>
+                Quote Explorer
+            </a>
+<a class="flex items-center gap-md text-on-surface-variant dark:text-secondary-fixed px-md py-sm hover:bg-surface-container-high dark:hover:bg-on-secondary-fixed-variant transition-all rounded-lg cursor-pointer scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+                Executive Brief
+            </a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="pt-[88px] pl-0 md:pl-[280px] pr-margin-desktop pb-margin-desktop min-h-screen">
+<div class="max-w-container-max mx-auto">
+<!-- Header -->
+<div class="mb-xl">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Motivations &amp; Analytics</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Deep dive into user intent, identifying key friction points and conversion drivers across the wishlist journey.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Section 1: Funnel Visualization -->
+<div class="col-span-1 lg:col-span-12 bg-surface-container-lowest rounded-xl p-lg shadow-soft border border-surface-container mb-gutter">
+<div class="flex justify-between items-center mb-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface">Wishlist → Purchase Funnel</h2>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-xs font-label-md text-label-md px-sm py-base rounded-DEFAULT border border-outline-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="filter_list">filter_list</span>
+                            Filter by Category
+                        </button>
+</div>
+<div class="flex flex-col md:flex-row gap-sm h-auto md:h-48 items-end justify-between relative pb-8">
+<!-- Funnel Steps -->
+<div class="w-full md:w-1/4 flex flex-col items-center group">
+<div class="w-full bg-primary-container/20 rounded-t-lg h-32 relative overflow-hidden transition-all duration-300 group-hover:bg-primary-container/30">
+<div class="absolute bottom-0 w-full bg-primary-container h-full transition-all duration-500 ease-in-out"></div>
+<div class="absolute inset-0 flex items-center justify-center font-price-lg text-price-lg text-on-primary-container font-bold">100%</div>
+</div>
+<div class="mt-xs text-center">
+<div class="font-label-md text-label-md text-on-surface font-bold">Added to Wishlist</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-[12px]">2.4M items</div>
+</div>
+</div>
+<div class="hidden md:flex flex-col items-center justify-center h-32 px-2 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+<span class="font-label-md text-label-md text-error mt-1">-22% Drop</span>
+</div>
+<div class="w-full md:w-1/4 flex flex-col items-center group">
+<div class="w-[90%] bg-primary-container/20 rounded-t-lg h-32 relative overflow-hidden transition-all duration-300 group-hover:bg-primary-container/30">
+<div class="absolute bottom-0 w-full bg-primary-container h-[78%] transition-all duration-500 ease-in-out"></div>
+<div class="absolute inset-0 flex items-center justify-center font-price-lg text-price-lg text-on-primary-container font-bold">78%</div>
+</div>
+<div class="mt-xs text-center">
+<div class="font-label-md text-label-md text-on-surface font-bold">Viewed Later</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-[12px]">1.87M items</div>
+</div>
+</div>
+<div class="hidden md:flex flex-col items-center justify-center h-32 px-2 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+<span class="font-label-md text-label-md text-error mt-1">-45% Drop</span>
+</div>
+<div class="w-full md:w-1/4 flex flex-col items-center group">
+<div class="w-[70%] bg-primary/20 rounded-t-lg h-32 relative overflow-hidden transition-all duration-300 group-hover:bg-primary/30">
+<div class="absolute bottom-0 w-full bg-primary h-[43%] transition-all duration-500 ease-in-out"></div>
+<div class="absolute inset-0 flex items-center justify-center font-price-lg text-price-lg text-on-primary font-bold">43%</div>
+</div>
+<div class="mt-xs text-center">
+<div class="font-label-md text-label-md text-on-surface font-bold">Added to Cart</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-[12px]">1.03M items</div>
+</div>
+</div>
+<div class="hidden md:flex flex-col items-center justify-center h-32 px-2 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+<span class="font-label-md text-label-md text-error mt-1">-18% Drop</span>
+</div>
+<div class="w-full md:w-1/4 flex flex-col items-center group">
+<div class="w-[50%] bg-on-primary-fixed-variant/20 rounded-t-lg h-32 relative overflow-hidden transition-all duration-300 group-hover:bg-on-primary-fixed-variant/30">
+<div class="absolute bottom-0 w-full bg-on-primary-fixed-variant h-[25%] transition-all duration-500 ease-in-out"></div>
+<div class="absolute inset-0 flex items-center justify-center font-price-lg text-price-lg text-on-primary font-bold">25%</div>
+</div>
+<div class="mt-xs text-center">
+<div class="font-label-md text-label-md text-on-surface font-bold">Purchased</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-[12px]">600k items</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Charts -->
+<div class="col-span-1 lg:col-span-7 bg-surface-container-lowest rounded-xl p-lg shadow-soft border border-surface-container shadow-hover">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface">Primary Conversion Blockers</h3>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="more_vert">more_vert</span>
+</div>
+<div class="relative h-64 w-full mt-md">
+<!-- Simulated Bar Chart -->
+<div class="flex flex-col justify-end h-full w-full border-l border-b border-surface-variant pb-xs pl-xs gap-sm">
+<div class="flex items-center w-full group">
+<div class="w-24 text-right pr-sm font-label-md text-label-md text-on-surface-variant truncate">Price Too High</div>
+<div class="h-6 bg-error/80 rounded-r-sm w-[85%] relative group-hover:bg-error transition-colors">
+<span class="absolute right-2 top-1 text-[10px] text-white font-bold">85%</span>
+</div>
+</div>
+<div class="flex items-center w-full group">
+<div class="w-24 text-right pr-sm font-label-md text-label-md text-on-surface-variant truncate">Out of Size</div>
+<div class="h-6 bg-primary-container/80 rounded-r-sm w-[62%] relative group-hover:bg-primary-container transition-colors">
+<span class="absolute right-2 top-1 text-[10px] text-white font-bold">62%</span>
+</div>
+</div>
+<div class="flex items-center w-full group">
+<div class="w-24 text-right pr-sm font-label-md text-label-md text-on-surface-variant truncate">Shipping Cost</div>
+<div class="h-6 bg-primary/80 rounded-r-sm w-[45%] relative group-hover:bg-primary transition-colors">
+<span class="absolute right-2 top-1 text-[10px] text-white font-bold">45%</span>
+</div>
+</div>
+<div class="flex items-center w-full group">
+<div class="w-24 text-right pr-sm font-label-md text-label-md text-on-surface-variant truncate">Unsure Fit</div>
+<div class="h-6 bg-outline/80 rounded-r-sm w-[30%] relative group-hover:bg-outline transition-colors">
+<span class="absolute right-2 top-1 text-[10px] text-white font-bold">30%</span>
+</div>
+</div>
+<div class="flex items-center w-full group">
+<div class="w-24 text-right pr-sm font-label-md text-label-md text-on-surface-variant truncate">Found Better</div>
+<div class="h-6 bg-secondary/80 rounded-r-sm w-[15%] relative group-hover:bg-secondary transition-colors">
+<span class="absolute right-2 top-1 text-[10px] text-white font-bold">15%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-1 lg:col-span-5 bg-surface-container-lowest rounded-xl p-lg shadow-soft border border-surface-container shadow-hover flex flex-col items-center justify-center">
+<div class="w-full flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Wishlist Motivations</h3>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="info">info</span>
+</div>
+<!-- Simulated Donut Chart using conic-gradient -->
+<div class="relative w-48 h-48 rounded-full flex items-center justify-center mb-md shadow-inner" style="background: conic-gradient(
+                        #df2457 0% 40%, 
+                        #ffb2ba 40% 65%, 
+                        #5b5d6f 65% 85%, 
+                        #e3bdc0 85% 100%
+                    );">
+<div class="w-32 h-32 bg-surface-container-lowest rounded-full flex flex-col items-center justify-center shadow-soft">
+<span class="font-headline-lg text-headline-lg text-on-surface leading-none">2.4M</span>
+<span class="font-label-md text-label-md text-on-surface-variant text-[10px] mt-1">Total Items</span>
+</div>
+</div>
+<div class="w-full grid grid-cols-2 gap-xs mt-sm font-label-md text-label-md">
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+<span class="text-on-surface">Price Tracking (40%)</span>
+</div>
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 rounded-full bg-inverse-primary"></div>
+<span class="text-on-surface">Outfit Planning (25%)</span>
+</div>
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="text-on-surface">Awaiting Restock (20%)</span>
+</div>
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 rounded-full bg-outline-variant"></div>
+<span class="text-on-surface">Casual Browsing (15%)</span>
+</div>
+</div>
+</div>
+<!-- Section 3: User Segment Analysis Bento -->
+<div class="col-span-1 lg:col-span-12 mt-lg mb-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="group">group</span>
+                        User Segment Analysis
+                    </h3>
+</div>
+<div class="col-span-1 lg:col-span-6 bg-surface-container-lowest rounded-xl p-lg shadow-soft border border-surface-container shadow-hover flex gap-md items-start">
+<div class="w-16 h-16 rounded-lg bg-surface-container-low border border-outline-variant flex items-center justify-center overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A macro shot of a sleek measuring tape wrapped around an elegant, minimalist dress form. Bright white studio lighting with a subtle Myntra pink gel light edge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9riqKxyxZQmKb-VbXWNh-VzVBoBUUbQs8wE3X--08tGOTtL49T8Xu60InzEi0qBmJ1X7V5q4o0jxKJdXw8JiXEViI5J7Yh8BJTbbsk622buZVw_-1Id18WpLbKpHOJOnWmGGAU8q71jLObGIfoZb4cgo-frbaDdZUMv05wIbC2reo9MtVeCmpSKFvB58gsjG6U3kdnsp8iGH5pNkwKFSuCgamodzkl6n8y0rmEZroV1neKeLsZQgSvQ"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-xs">
+<h4 class="font-headline-md text-headline-md text-on-surface leading-tight">Fit-Conscious Buyer</h4>
+<span class="bg-surface-variant text-on-surface-variant font-label-md text-label-md px-2 py-1 rounded-full text-[10px]">High Value</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Highly engaged but hesitates due to sizing uncertainty. Needs social proof and exact measurements.</p>
+<div class="space-y-sm">
+<div>
+<div class="flex justify-between font-label-md text-label-md text-[10px] mb-1">
+<span class="text-on-surface-variant">Size Anxiety Friction</span>
+<span class="text-error font-bold">High (8.2/10)</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5">
+<div class="bg-error h-1.5 rounded-full" style="width: 82%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-md text-label-md text-[10px] mb-1">
+<span class="text-on-surface-variant">Return Rate Propensity</span>
+<span class="text-primary font-bold">Medium (5.5/10)</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 55%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-1 lg:col-span-6 bg-surface-container-lowest rounded-xl p-lg shadow-soft border border-surface-container shadow-hover flex gap-md items-start">
+<div class="w-16 h-16 rounded-lg bg-surface-container-low border border-outline-variant flex items-center justify-center overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist composition of scattered copper coins and a sleek digital percentage sign on a pristine white surface. Soft shadows, professional light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMEBtvblNHpmUNhv7aXUNaClcff-UlHj9_ojgSBZ8dQTlgL62-3_ZRNpskZHGZvhQF9aChY2XAaiQgvBUkKzClT7H37JohB7IhljdMuXOQAvRtsIi2U2QLDHX04EGgZZOMb721WR79m08urJ2roXDPrBOnFGKobZphcSVPtcZzPaBLCSODA6dQktdbfpHamILGV6MQE9Hx07YuWoM3JIjWFKCZTcnG1fTuYtkd-HgemSoSi4XPVabFMg"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-xs">
+<h4 class="font-headline-md text-headline-md text-on-surface leading-tight">Budget-Sensitive Saver</h4>
+<span class="bg-surface-container-high text-on-surface font-label-md text-label-md px-2 py-1 rounded-full text-[10px]">High Volume</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Uses wishlist exclusively as a price drop tracker. Highly responsive to push notifications on sales.</p>
+<div class="space-y-sm">
+<div>
+<div class="flex justify-between font-label-md text-label-md text-[10px] mb-1">
+<span class="text-on-surface-variant">Price Sensitivity Score</span>
+<span class="text-error font-bold">Critical (9.4/10)</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5">
+<div class="bg-on-primary-fixed-variant h-1.5 rounded-full" style="width: 94%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-md text-label-md text-[10px] mb-1">
+<span class="text-on-surface-variant">Brand Loyalty</span>
+<span class="text-secondary font-bold">Low (3.1/10)</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 31%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

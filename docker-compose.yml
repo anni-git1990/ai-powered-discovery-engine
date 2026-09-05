@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  discovery-engine-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: myntra_discovery_dashboard
+    ports:
+      - "8501:8501"
+    environment:
+      - ENV=production
+      - LOG_LEVEL=INFO
+      - DUCKDB_PATH=/app/data/discovery_engine.duckdb
+      - CHROMA_DB_PATH=/app/data/chroma_db
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+    restart: unless-stopped

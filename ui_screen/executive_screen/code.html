@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Myntra AI Discovery Engine - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#181b2a",
+                    "on-primary-container": "#fffbff",
+                    "tertiary-fixed": "#71f8e4",
+                    "surface-dim": "#dcd9d9",
+                    "on-primary-fixed-variant": "#910031",
+                    "outline-variant": "#e3bdc0",
+                    "on-tertiary-fixed": "#00201c",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#c3c5da",
+                    "on-tertiary-fixed-variant": "#005048",
+                    "on-surface": "#1b1c1c",
+                    "surface-container-highest": "#e4e2e1",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#f4fffb",
+                    "secondary": "#5b5d6f",
+                    "primary-container": "#df2457",
+                    "inverse-primary": "#ffb2ba",
+                    "primary": "#b90041",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1b1c1c",
+                    "outline": "#8f6f72",
+                    "surface-container-high": "#eae8e7",
+                    "on-secondary-container": "#616376",
+                    "secondary-fixed": "#dfe1f7",
+                    "on-secondary-fixed-variant": "#434657",
+                    "secondary-container": "#dfe1f7",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-container": "#f0eded",
+                    "primary-fixed-dim": "#ffb2ba",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#008376",
+                    "surface-tint": "#bd0043",
+                    "surface-bright": "#fbf9f8",
+                    "inverse-surface": "#303030",
+                    "tertiary-fixed-dim": "#4fdbc8",
+                    "tertiary": "#00685d",
+                    "inverse-on-surface": "#f3f0f0",
+                    "surface": "#fbf9f8",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#ffd9dc",
+                    "error": "#ba1a1a",
+                    "background": "#fbf9f8",
+                    "on-primary-fixed": "#400011",
+                    "surface-variant": "#e4e2e1",
+                    "on-surface-variant": "#5b4042"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "base": "4px",
+                    "xs": "8px",
+                    "margin-desktop": "40px",
+                    "xl": "32px",
+                    "container-max": "1280px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "md": "16px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": [
+                            "Outfit"
+                    ],
+                    "body-md": [
+                            "Outfit"
+                    ],
+                    "price-lg": [
+                            "Outfit"
+                    ],
+                    "display": [
+                            "Outfit"
+                    ],
+                    "body-lg": [
+                            "Outfit"
+                    ],
+                    "headline-lg-mobile": [
+                            "Outfit"
+                    ],
+                    "headline-md": [
+                            "Outfit"
+                    ],
+                    "label-md": [
+                            "Outfit"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "price-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-md": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+        },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F8F9FA;
+            color: #1b1c1c;
+        }
+        .myntra-pink {
+            background-color: #FF3F6C;
+            color: white;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 12px rgba(51, 51, 51, 0.04);
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(51, 51, 51, 0.08);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased h-screen flex overflow-hidden">
+<!-- SideNavBar (Shared Component) -->
+<nav class="hidden md:flex flex-col border-r border-outline-variant bg-surface-container-low text-primary docked left-0 h-screen w-64 p-md z-40 fixed left-0 top-16 h-[calc(100vh-64px)] w-64 flex flex-col p-md z-40">
+<div class="mb-xl">
+<h2 class="font-headline-md text-headline-md text-primary font-bold">PM Dashboard</h2>
+<p class="font-label-md text-label-md text-on-surface-variant">AI Discovery Engine</p>
+</div>
+<ul class="flex flex-col gap-sm flex-1">
+<li>
+<a class="flex items-center gap-md bg-secondary-container text-on-secondary-container font-bold rounded-lg px-md py-sm scale-98 active:scale-95 transition-transform hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-label-md text-label-md">Opportunity Matrix</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm scale-98 active:scale-95 transition-transform hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-label-md text-label-md">Motivations</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm scale-98 active:scale-95 transition-transform hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="format_quote">format_quote</span>
+<span class="font-label-md text-label-md">Quote Explorer</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm scale-98 active:scale-95 transition-transform hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-md text-label-md">Executive Brief</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto flex items-center gap-md pt-lg border-t border-outline-variant">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A small, professional headshot photo of an executive user in a corporate light-mode setting. The avatar represents an active user profile, with neutral lighting and a clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlQXyG-tlpCsciYPli1mKHooAseXdSsbt-xPQ9A_z4mfIIGx6ZUGNm_rjIxbjxmsZ0tN-PCM_qChm4n7baSsSoR1Y53m26-eSuUcv34YdaV-cHHcy4-Moxok4QZaVTnI6SSZbfICxH8YlfJnNsWS6KT9MixpGqVgk_xHTM9HEAwUG5bFG5q4ds6HTW68W1zeB7BKvlBEISP3vBQtNbO_PJTBQ_hw7eWmCwSF5uQn_LWRVTs6cySJCXig"/>
+<div>
+<p class="font-label-md text-label-md font-bold">User Profile</p>
+<p class="font-label-md text-label-md text-on-surface-variant text-[10px]">Product Manager</p>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<div class="flex-1 flex flex-col md:ml-64 relative h-full w-full">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 bg-surface border-b border-outline-variant style_bg_color bg-surface dark:bg-surface-dim style_primary_color text-primary dark:text-primary-fixed-dim style_typography font-body-md text-body-md style_component_shape docked full-width top-0 style_separation_logic border-b border-outline-variant dark:border-outline style_shadows_and_elevation flat no shadows style_shell_layout fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 bg-surface dark:bg-surface-dim">
+<div class="flex items-center gap-md">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Myntra Wishlist Discovery Engine</h1>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="pl-xl pr-sm py-sm border border-outline-variant rounded-lg bg-surface text-body-md focus:border-on-surface focus:ring-0 w-64 transition-colors" placeholder="Search insights..." type="text"/>
+</div>
+<div class="flex gap-md">
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 cursor-pointer active:opacity-80 flex items-center gap-xs">
+<span class="material-symbols-outlined">settings</span>
+                        Settings
+                    </button>
+<button class="myntra-pink font-label-md text-label-md px-md py-sm rounded-lg font-bold hover:opacity-90 transition-opacity cursor-pointer active:opacity-80 flex items-center gap-xs">
+<span class="material-symbols-outlined">download</span>
+                        Export Executive Brief
+                    </button>
+</div>
+</div>
+</header>
+<!-- Scrollable Dashboard Content -->
+<main class="flex-1 overflow-y-auto pt-[80px] pb-xl px-margin-mobile md:px-margin-desktop bg-surface-container-lowest">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-xl">
+<!-- Page Header -->
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-base">Executive Dashboard</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time analysis of customer friction points and product opportunities.</p>
+</div>
+<!-- KPI Cards Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="bg-surface rounded-[16px] p-lg border border-[#F5F5F6] card-shadow card-hover transition-all duration-300">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Total Reviews Analyzed</span>
+<span class="material-symbols-outlined text-primary bg-primary-fixed p-base rounded-full">bar_chart</span>
+</div>
+<p class="font-display text-display text-on-surface">142.5k</p>
+<div class="mt-sm flex items-center gap-base text-[#008376] font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+12% vs last month</span>
+</div>
+</div>
+<div class="bg-surface rounded-[16px] p-lg border border-[#F5F5F6] card-shadow card-hover transition-all duration-300">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">AI Insights Generated</span>
+<span class="material-symbols-outlined text-primary bg-primary-fixed p-base rounded-full">lightbulb</span>
+</div>
+<p class="font-display text-display text-on-surface">38.4k</p>
+<div class="mt-sm flex items-center gap-base text-[#008376] font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+5.2% accuracy</span>
+</div>
+</div>
+<div class="bg-surface rounded-[16px] p-lg border border-[#F5F5F6] card-shadow card-hover transition-all duration-300">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Purchase Barriers Identified</span>
+<span class="material-symbols-outlined text-[#ba1a1a] bg-error-container p-base rounded-full">warning</span>
+</div>
+<p class="font-display text-display text-on-surface">83.2%</p>
+<div class="mt-sm flex items-center gap-base text-[#5b4042] font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Of analyzed negative sentiment</span>
+</div>
+</div>
+<div class="bg-surface rounded-[16px] p-lg border border-[#F5F5F6] card-shadow card-hover transition-all duration-300">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Top Barrier Category</span>
+<span class="material-symbols-outlined text-[#00685d] bg-tertiary-container text-white p-base rounded-full">straighten</span>
+</div>
+<p class="font-headline-lg text-headline-lg text-on-surface mt-sm">Size &amp; Fit</p>
+<div class="mt-sm flex items-center gap-base text-on-surface-variant font-label-md text-label-md">
+<span>Requires immediate attention</span>
+</div>
+</div>
+</div>
+<!-- Matrix Section -->
+<div class="bg-surface rounded-[16px] border border-[#F5F5F6] card-shadow overflow-hidden flex flex-col">
+<div class="p-lg border-b border-[#F5F5F6] flex justify-between items-center bg-surface-bright">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Prioritized Opportunity Matrix</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-base">Actionable insights ranked by severity and frequency.</p>
+</div>
+<div class="flex gap-sm">
+<button class="px-md py-sm border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                                Filter
+                            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-[#F5F5F6]">
+<th class="p-md font-label-md text-label-md text-on-surface-variant font-bold uppercase w-24">Priority</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant font-bold uppercase">Title</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant font-bold uppercase">Blocker</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant font-bold uppercase w-20 text-center">F</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant font-bold uppercase w-20 text-center">I</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant font-bold uppercase w-20 text-center">S</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant font-bold uppercase w-24 text-right">Opp Score</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<!-- Row 1 -->
+<tr class="border-b border-[#F5F5F6] hover:bg-surface-container-lowest transition-colors group cursor-pointer">
+<td class="p-md">
+<span class="inline-block px-sm py-base bg-[#ffdad6] text-[#93000a] rounded-full font-label-md text-label-md font-bold">P1</span>
+</td>
+<td class="p-md font-bold text-on-surface group-hover:text-primary transition-colors">Inconsistent Sizing Across Brands</td>
+<td class="p-md text-on-surface-variant">Customers return items due to unpredictable fit compared to standard charts.</td>
+<td class="p-md text-center">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden"><div class="bg-[#ba1a1a] h-full w-[90%]"></div></div>
+</td>
+<td class="p-md text-center">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden"><div class="bg-[#df2457] h-full w-[85%]"></div></div>
+</td>
+<td class="p-md text-center">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden"><div class="bg-[#93000a] h-full w-[95%]"></div></div>
+</td>
+<td class="p-md text-right font-price-lg text-price-lg text-[#ba1a1a]">92.5</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-[#F5F5F6] hover:bg-surface-container-lowest transition-colors group cursor-pointer">
+<td class="p-md">
+<span class="inline-block px-sm py-base bg-[#ffdad6] text-[#93000a] rounded-full font-label-md text-label-md font-bold">P1</span>
+</td>
+<td class="p-md font-bold text-on-surface group-hover:text-primary transition-colors">Fabric Quality Ambiguity</td>
+<td class="p-md text-on-surface-variant">Images do not clearly convey material texture or weight.</td>
+<td class="p-md text-center">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden"><div class="bg-[#ba1a1a] h-full w-[80%]"></div></div>
+</td>
+<td class="p-md text-center">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden"><div class="bg-[#df2457] h-full w-[75%]"></div></div>
+</td>
+<td class="p-md text-center">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden"><div class="bg-[#ba1a1a] h-full w-[88%]"></div></div>
+</td>
+<td class="p-md text-right font-price-lg text-price-lg text-[#ba1a1a]">88.1</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-[#F5F5F6] hover:bg-surface-container-lowest transition-colors group cursor-pointer">
+<td class="p-md">
+<span class="inline-block px-sm py-base bg-[#ffd9dc] text-[#400011] rounded-full font-label-md text-label-md font-bold">P2</span>
+</td>
+<td class="p-md font-bold text-on-surface group-hover:text-primary transition-colors">Complex Return Process</td>
+<td class="p-md text-on-surface-variant">Users abandon carts fearing hassle if items don't meet expectations.</td>
+<td class="p-md text-center">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden"><div class="bg-[#df2457] h-full w-[65%]"></div></div>
+</td>
+<td class="p-md text-center">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden"><div class="bg-[#df2457] h-full w-[70%]"></div></div>
+</td>
+<td class="p-md text-center">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden"><div class="bg-[#df2457] h-full w-[60%]"></div></div>
+</td>
+<td class="p-md text-right font-price-lg text-price-lg text-[#df2457]">74.3</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group cursor-pointer">
+<td class="p-md">
+<span class="inline-block px-sm py-base bg-[#f0eded] text-[#5b5d6f] rounded-full font-label-md text-label-md font-bold">P3</span>
+</td>
+<td class="p-md font-bold text-on-surface group-hover:text-primary transition-colors">Missing Styling Inspiration</td>
+<td class="p-md text-on-surface-variant">Lack of 'how to wear' examples reduces multi-item purchases.</td>
+<td class="p-md text-center">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden"><div class="bg-[#5b5d6f] h-full w-[40%]"></div></div>
+</td>
+<td class="p-md text-center">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden"><div class="bg-[#5b5d6f] h-full w-[30%]"></div></div>
+</td>
+<td class="p-md text-center">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden"><div class="bg-[#5b5d6f] h-full w-[35%]"></div></div>
+</td>
+<td class="p-md text-right font-price-lg text-price-lg text-[#5b5d6f]">42.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
