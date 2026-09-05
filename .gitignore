@@ -1,0 +1,73 @@
+# ==============================================================================
+# Environment Variables & Secrets
+# ==============================================================================
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+*.env
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Streamlit Secrets
+.streamlit/secrets.toml
+
+# Railway CLI Local Settings
+.railway/
+
+# Dependency directories
+node_modules/
+
+# Build output
+dist/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Secrets and Credentials
+client_secret*.json
+credentials*.json
+token*.json
+*.pem
+*.key
+
+.env.template
+
+# ==============================================================================
+# Python Runtime & Virtual Environments
+# ==============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+
+# ==============================================================================
+# Generated Logs & Temporary Files
+# ==============================================================================
+*.log
+logs/
+scratch/
+.gemini/
