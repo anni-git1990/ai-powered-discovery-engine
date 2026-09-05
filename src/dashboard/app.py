@@ -22,6 +22,7 @@ from src.dashboard.report_generator import ExecutiveReportGenerator
 from src.utils.formatters import format_label
 
 
+@st.cache_resource
 def get_managers():
     db_path = "data/discovery_engine.duckdb"
     chroma_path = "data/chroma_db"

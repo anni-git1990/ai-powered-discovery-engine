@@ -47,7 +47,7 @@ credentials*.json
 token*.json
 *.pem
 *.key
-
+.env.example
 .env.template
 
 # ==============================================================================
